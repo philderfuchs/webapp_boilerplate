@@ -1,14 +1,13 @@
-var webpack = require("webpack");
+const webpack = require("webpack");
 
-module.exports = {
+const commonConfig = {
     entry: __dirname + "/js/app.js",
     output: {
         path: __dirname + "/build/js",
         publicPath: '/build/js/',
         filename: "app.bundle.js"
     },
-    plugins: [
-    ],
+    plugins: [],
     module: {
         loaders: [
             {
@@ -22,9 +21,20 @@ module.exports = {
     },
     stats: {
         colors: true
-    },
-    devServer: {
-        port: 8080
-    },
-    devtool: 'source-map'
+    }
+};
+
+module.exports = function (env) {
+
+    if(env === "dev") {
+        console.log(">>> DEVELOPMENT ENVIRONMENT");
+        commonConfig.devtool = 'source-map';
+        commonConfig.devServer = {
+            port: 8080
+        }
+    } else if (env === "prod") {
+        console.log(">>> PRODUCTION ENVIRONMENT");
+    }
+
+    return commonConfig;
 };

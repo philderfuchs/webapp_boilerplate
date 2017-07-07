@@ -4,10 +4,10 @@
     "start": "concurrently --kill-others \"npm run serve\" \"npm run pack\" \"npm run sass\"",
     "dev": "concurrently --kill-others \"npm run webpack-server\" \"npm run sass\"",
     "serve": "http-server",
-    "pack": "webpack --watch",
+    "pack": "webpack --watch --env dev",
     "sass": "node-sass scss/app.scss build/css/app.css --watch",
-    "webpack-server": "webpack-dev-server",
-    "production": "node-sass scss/app.scss build/css/app.css --output-style compressed \n webpack -p --config=webpack.production.config.js"
+    "webpack-server": "webpack-dev-server --env dev",
+    "prod": "node-sass scss/app.scss build/css/app.css --output-style compressed \n webpack -p --env prod"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
