@@ -24,7 +24,7 @@ module.exports = {
         colors: true
     },
     devServer: {
-        port: 8000
+        port: 8080
     },
     devtool: 'source-map'
 };
